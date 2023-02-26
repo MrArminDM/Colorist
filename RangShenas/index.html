@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رنگ شناس</title>
+  <!-- #region library -->
+  <link rel="stylesheet" href="CSS/index.css">
+  <link rel="stylesheet" href="Library/Bootstrap/CSS/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- #endregion library -->
+  <!-- #region Sound -->
+  <audio id="Correct">
+    <source src="Musics/Correct.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="Wrong">
+    <source src="Musics/Wrong.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="Welcome">
+    <source src="Musics/Welcome.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="True">
+    <source src="Musics/True.mp3" type="audio/mpeg">
+  </audio>
+  <!-- #endregion Sound -->
+  <!-- #region font -->
+  <style>
+    @font-face {
+      font-family: vazir;
+      src:
+        url('Library/Fonts/Farsi-Digits/Vazir-FD.eot') format('eot'),
+        url('Library/Fonts/Farsi-Digits/Vazir-FD.woff2') format('woff2'),
+        url('Library/Fonts/Farsi-Digits/Vazir-FD.woff') format('woff'),
+        url('Library/Fonts/Farsi-Digits/Vazir-FD.ttf') format('truetype');
+    }
+  </style>
+  <!-- #endregion font -->
+</head>
+
+<body>
+  <!-- #region page -->
+  <div id="page">
+    <!-- #region header -->
+    <div id="header">
+      <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+          <div class="container-fluid">
+            <button id="rahnamabtn" class="btn btn-warning btn-lg" onclick="rahnamabtn()"><i
+                class="fa fa-info-circle"></i>
+              راهنما </button>
+            <div class="btn-group btn-group-lg">
+              <button id="Aboutus" class="btn btn-success" onclick="myModal_Aboutus()"><i
+                  class="fa fa-address-card"></i> شناسه اثر </button>
+              <button id="hbtn" class="btn btn-success" onclick="historybtn()"><i class="fa fa-archive"></i>
+                دریافت تاریخچه
+              </button>
+            </div>
+            <div class="btn-group btn-group-lg">
+              <button id="reload" class="btn btn-danger btn-lg" onclick="reload()"><i
+                  class="fa fa fa-refresh fa-spin"></i> بارگذاری دوباره </button>
+              <button class="btn btn-danger btn-lg" onclick="end()" id="endbtn"><i class="fa fa-sign-out"></i> پایان
+                بازی</button>
+            </div>
+
+            <div class="btn-group btn-group-lg">
+              <button id="Modal-Shop" class="btn btn-primary" onclick="shop()" id="shop"><i
+                  class="fa fa-cart-plus"></i>فروشگاه</button>
+              <button class="btn btn-primary" onclick="stop_time()" id="stop_time"> توقف زمان </button>
+            </div>
+        </ul>
+        <ul class="nav navbar-nav">
+          <div class="buttons">
+            <div class="prev-track" onclick="prevTrack()"><i class="fa fa-step-backward"></i></div>
+            <div class="playpause-track" onclick="Audiobtn()" id="apbtn"><i class="fa fa-play-circle"></i></div>
+            <div class="next-track" onclick="nextTrack()"><i class="fa fa-step-forward"></i></div>
+          </div>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <div class="btn-group btn-group-lg">
+            <button id="accountbtn" class="btn btn-info" onclick="accountbtn()"><i class="fa fa-user-circle-o"></i> حساب
+              کاربری </button>
+            <button id="login-singout" class="btn btn-info" onclick="singinbtn()"><i class="fa fa-user-plus"></i> ورود
+            </button>
+            <button> .</button>
+          </div>
+        </ul>
+
+
+
+      </nav>
+
+    </div>
+    <!-- #endregion header -->
+    <!-- #region navarpishraft -->
+    <div id="navar-pishraft" class="progress">
+      <div id="navar" class="progress-bar progress-bar-striped active" role="progressbar">
+        نوار پیشرفت زمان</div>
+    </div>
+    <!-- #endregion navarpishraft -->
+    <div id="area">
+      <!-- #region content -->
+      <div class="btn-group btn-group-lg buttonstart">
+
+        <button onclick="starta()" class="button btn" style="vertical-align:middle"><span> <b>شروع با دکمه های ثابت</b>
+          </span></button>
+        <button onclick="startb()" class="button btn" style="vertical-align:middle"><span> <b>شروع با دکمه های غیر
+              ثابت</b> </span></button>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <p class="marhale"></p>
+          <p class="soal"></p>
+          <p class="zaman"></p>
+        </div>
+        <div class="col-lg-6">
+          <p class="colorshow"></p>
+        </div>
+        <div class="col-lg-3">
+
+          <p class="emtiaz"></p>
+          <p class="dorost"></p>
+          <p class="ghalat"></p>
+          <p class="khali"></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8" id="gamearea">
+          <div class="grid-container">
+            <div class="grid-item" id="grid1"></div>
+            <div class="grid-item" id="grid2"></div>
+            <div class="grid-item" id="grid3"></div>
+            <div class="grid-item" id="grid4"></div>
+            <div class="grid-item" id="grid5"></div>
+            <div class="grid-item" id="grid6"></div>
+            <div class="grid-item" id="grid7"></div>
+            <div class="grid-item" id="grid8"></div>
+            <div class="grid-item" id="grid9"></div>
+            <div class="grid-item" id="grid10"></div>
+            <div class="grid-item" id="grid11"></div>
+            <div class="grid-item" id="grid12"></div>
+            <div class="grid-item" id="grid13"></div>
+            <div class="grid-item" id="grid14"></div>
+            <div class="grid-item" id="grid15"></div>
+            <div class="grid-item" id="grid16"></div>
+            <div class="grid-item" id="grid17"></div>
+            <div class="grid-item" id="grid18"></div>
+            <div class="grid-item" id="grid19"></div>
+            <div class="grid-item" id="grid20"></div>
+            <div class="grid-item" id="grid21"></div>
+            <div class="grid-item" id="grid22"></div>
+            <div class="grid-item" id="grid23"></div>
+            <div class="grid-item" id="grid24"></div>
+            <div class="grid-item" id="grid25"></div>
+            <div class="grid-item" id="grid26"></div>
+            <div class="grid-item" id="grid27"></div>
+            <div class="grid-item" id="grid28"></div>
+            <div class="grid-item" id="grid29"></div>
+            <div class="grid-item" id="grid30"></div>
+          </div>
+          <button id="btn1" class="answer_btn btn-lg" onclick="btn1()">1</button>
+          <button id="btn2" class="answer_btn btn-lg" onclick="btn2()">2</button>
+          <button id="btn3" class="answer_btn btn-lg" onclick="btn3()">3</button>
+          <button id="btn4" class="answer_btn btn-lg" onclick="btn4()">4</button>
+          <button id="btn5" class="answer_btn btn-lg" onclick="btn5()">5</button>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <!-- #endregion content -->
+      <!-- #region callout html -->
+      <div class="callout" id="callout">
+        <div class="callout-header"><b><i class="fa fa-warning"></i> نکته </b></div>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+        <div class="callout-container">
+          <p>لطفا قبل از شروع بازی راهنما را <b>مطالعه</b> کنید</p>
+          <p>اگر در هنگام <b>شروع بازی</b> صدای موسیقی را نمیشنوید به تنظیمات مرورگر خود بروید و گزینه
+            <b>پخش اتوماتیک</b> را بر روی <b>همیشه</b> بگذارید
+          </p>
+
+          <p>ممکن است دلیل <b>پخش نشدن صدا</b> در اول بازی برای شما این باشد که شما در بازی قبلی خود تایید کرده
+            اید که موسیقی بازی در بازی بعدی شما <b>قطع</b> باشد</p>
+        </div>
+      </div>
+      <!-- #endregion callout html -->
+      <div id="snackbar"></div>
+    </div>
+  </div>
+  <!-- #region modals html -->
+  <!-- #region Aboutus html box html -->
+  <div id="myModal_Aboutus" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h1>شناسه اثر</h1>
+      </div>
+      <div class="modal-body">
+        <p><b>:مشخصات سازنده</b></p>
+        <p><b>نام و نام خانوادگی:</b> آرمین دوست محمدی</p>
+        <p><b>استان:</b> خوزستان</p>
+        <p><b>شهرستان</b> آبادان</p>
+        <p><b>دبیرستان</b> دبیرستان استعدادهای درخشان شهید بهشتی آبادان</p>
+        <p><b>:اهداف پروژه</b></p>
+        <p>هدف از این بازی آموزش مفهوم رنگها و سنجش قدرت عکس العمل کودکان پیش دبستانی و دبستانی میباشد که البته برای
+          سایر سنین نیز قابل استفاده میباشد</p>
+        <p><b>:توضیح مختصر راجع به پروژه</b></p>
+        <p>در این بازی 5 دایره رنگی در مکانهای تصادفی از صفحه بازی در زمانهای مشخص ظاهر شده و همزمان اسم یک رنگ بصورت
+          تصادفی در بالای تصویر نمایش داده میشود که کاربر بایستی دایره هم رنگ با آن رنگ درخواست شده را پیدا کرده و روی
+          آن کلیک نماید</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- #endregion Aboutus html box html -->
+  <!-- #region rahnama html box html -->
+  <div id="myModal_rahnama" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>به راهنما خوش آمدید</h2>
+      </div>
+      <div class="modal-body">
+        <p>.برای انتخاب و تایید هر گزینه فقط بر روی آن کلیک کنید</p>
+        <p>درصورت انتخاب پاسخ درست <b>1</b> امتیاز کسب میکنید</p>
+        <p>درصورت انتخاب پاسخ اشتباه <b>2</b> امتیاز از شما کسر خواهد شد</p>
+        <p>:زمان پاسخ دهی به هر سوال 5 - 2 ثانیه میباشد</p>
+        <p> مرحله1: 5 ثانیه --- مرحله2: 2 ثانیه</p>
+        <p>.در هنگام شروع بازی شما فقط یک کلید دارید که در ادامه میتوانید از فروشگاه با دادن 4 امتیاز کلید بخرید</p>
+        <p>.تعداد کلید های شما در حساب کاربری شما قابل دیدن است</p>
+        <p>.در صورت استفاده از دکمه توقف زمان 1 کلید از شما کسر خواهد شد</p>
+        <p>.در پایان سوالات شما میتوانید امتیازات خود را ثبت کنید و همچنین نمودار امتیازات خود را مشاهده کنید</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- #endregion rahnama html box html -->
+  <!-- #region history html box html -->
+  <div id="myModal_history" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>تاریخچه امتیازات</h2>
+      </div>
+      <div class="modal-body">
+        <p id="history_text"></p>
+      </div>
+    </div>
+
+  </div>
+  <!-- #endregion history ht box html -->
+  <!-- #region account html box html -->
+  <div id="myModal_account" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>حساب کاربری</h2>
+      </div>
+      <div class="modal-body">
+        <p><b>:نام کاربری</b></p>
+        <p id="username"></p>
+        <p><b>:رمز کاربر</b></p>
+        <p id="password"></p>
+        <p><b>:تعداد کلیدها</b></p>
+        <p id="show_keys"></p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- #endregion account html box html -->
+  <!-- #region shop html box html -->
+  <div id="myModal_Shop" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>به فروشگاه خوش آمدبد</h2>
+      </div>
+      <div class="modal-body">
+        <p><b>:محصولات</b></p>
+        <p><i class="fa fa-key"></i> کلید </p>
+        <p><b>:قیمت کلید</b></p>
+        <p>امتیاز 4</p>
+        <button onclick="buy_item()" class="btn btn-success" id="btnshop"><i class="fa fa-credit-card"></i> خرید کردن
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <!-- #endregion shop html box html -->
+  <!-- #region Alert html box html -->
+  <button id="btnalert" data-toggle="modal" data-target="#Alert" style="display: none;"></button>
+  <div id="Alert" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">!خطا</h4>
+        </div>
+        <div class="modal-body">
+          <p id="alert-txt"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- #endregion Alert html box html -->
+  <!-- #endregion modals html -->
+  <!-- #region Chart html -->
+  <div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+      <div id="myPlot" style="width:100%;max-width:700px"></div>
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+  </div>
+  <!-- #endregion Chart html -->
+  <!-- #endregion page -->
+
+  <!-- #region script -->
+  <script src="JS/index.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- #endregion script -->
+</body>
+
+</html>

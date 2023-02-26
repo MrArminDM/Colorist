@@ -1,0 +1,14 @@
+Hi!
+I'm ArminDM (I built this program and won the 1 national ranking).
+
+For use my program:
+1. install [VS Code] program.
+2. install [live server] extension.
+   Go to the extensions in VS code and search [live server] after it click on it and install
+3. click [Go live] on status bar.
+4. now you can see my project and use it
+5. if you need to now about it:
+   1. Read about
+   2. Read info
+
+It's really easy to use :)
